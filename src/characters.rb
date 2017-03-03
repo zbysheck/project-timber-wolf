@@ -10,7 +10,7 @@ Squib::Deck.new(cards: total) do
   use_layout file: 'layouts/characters.yml'
   background color: :white
   rect layout: :cut
-  svg file: 'character.svg'
+  #svg file: 'character.svg'
 
   # puts (data['Default3'].map do |default|
   #       default.to_s.empty? ? nil : 'thirdskill_bw.svg'
@@ -23,15 +23,27 @@ Squib::Deck.new(cards: total) do
 
   build :color do
     grits = data['Level'].map do |level|
-      level == '1' ? "gritty amateur.png" : "gritty pro.png"
+      #level == '1' ? "gritty amateur.png" : "gritty pro.png"
+      case level
+      when '1'
+        "gritty water.png"
+      when '2'
+        "gritty las.png"
+      when '3'
+        "gritty pro.png"
+      when '4'
+        "gritty wl.png"
+      when '5'
+        "gritty ml.png"
+      end
     end
     png file: grits
-    svg file: 'character-color.svg'#, range: 0
+    svg file: 'character-color3.svg'#, range: 0
     thirdskills = data['Default3'].map do |default|
       default.nil? ? nil : 'thirdskill.svg'
     end
     svg file: thirdskills
-    svg file: data['Name'].map { |n| "shadows/#{n.downcase}.svg" }
+    #svg file: data['Name'].map { |n| "shadows/#{n.downcase}.svg" }
     special_bubbles = data['Special'].map do |special|
       case special.length
       when 0..100 then 'special-sm.svg'
@@ -51,10 +63,10 @@ Squib::Deck.new(cards: total) do
   end
   text str: data['Name'], layout: :title, font_size: titlesizes
 
-  levels = data['Level'].map { |l| l == '1' ? "Amateur" : "Pro" }
+  levels = data['Level'].map { |l| l == '1' ? "" : "" }
   text layout: :Level, str: levels
   text layout: :Memory, str: data['Memory']
-  text layout: :Ideas, str: data['Ideas'].map { |i| "#{i}💡"}
+  text layout: :Ideas, str: data['Ideas'].map { |i| "#{i}💡".to_i}
 
   text layout: :Default1, str: data['Default1']
   text layout: :Default2, str: data['Default2']

@@ -20,7 +20,7 @@ Level:
   height: 75
   align: center
 Memory:
-  font: Archivo Narrow, 45
+  font: Archivo Narrow,  Serif, Segoe UI Symbol, Dingbats, Bold 38
   x: 90
   y: 170
   width: 115
@@ -45,7 +45,7 @@ Special:
   valign: middle
 
 DefaultSkill:
-  font: Archivo Narrow, Serif, Segoe UI Symbol, Dingbats, Bold 36
+  font: Archivo Narrow, Serif, Segoe UI Symbol, Dingbats, Bold 24
   y: 920
   width: 215
   height: 154
